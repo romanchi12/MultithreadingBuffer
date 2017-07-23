@@ -7,14 +7,21 @@ import java.util.LinkedList;
  * Created by Роман on 23.07.2017.
  */
 public class PagesBuffer extends LinkedList {
-    int MAX_PAGES = 2;
+    int MAX_PAGES;
+    public PagesBuffer(){
+        this(40);
+    }
+    public PagesBuffer(int MAX_PAGES){
+        this.MAX_PAGES = MAX_PAGES;
+    }
     @Override
     public synchronized Object removeFirst() {
         while(this.size() == 0){
             try {
                 this.wait();
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                System.out.println(Thread.currentThread().getName() + " has been interrupted");
+                return null;
             }
         }
         Object o =  super.removeFirst();

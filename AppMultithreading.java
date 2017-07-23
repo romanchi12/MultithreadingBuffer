@@ -6,10 +6,9 @@ package org.abitpoisk;
 public class AppMultithreading {
     public static void main(String...args){
         PagesBuffer pagesBuffer = new PagesBuffer();
-        PagesProducersPool pagesProducersPool = new PagesProducersPool(pagesBuffer,4);
+        PagesProducersPool pagesProducersPool = new PagesProducersPool(pagesBuffer,40);
         PagesConsumerPool pagesConsumerPool = new PagesConsumerPool(pagesBuffer, 2);
         pagesProducersPool.poolStart();
         pagesConsumerPool.poolStart();
-        pagesConsumerPool.poolInterrupt();
     }
 }

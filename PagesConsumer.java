@@ -16,7 +16,7 @@ public class PagesConsumer extends Thread{
     @Override
     public void run() {
         //parsing data from pagesBuffer and saving to database
-        while(!Thread.currentThread().isInterrupted()){
+        while(true){
             try{
                 Object consumedValue = this.pagesBuffer.removeFirst();
             }catch (Exception ex){
